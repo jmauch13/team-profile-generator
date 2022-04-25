@@ -1,9 +1,11 @@
+// generate page
+const generateHTML = require('./scr/generateHTML');
+
+
 // node modules used
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// generate page
-const generateHTML = require('./scr/generateHTML');
 
 // team member profiles
 const Manager = require('./lib/Manager');
@@ -60,15 +62,16 @@ const addManager = () => {
         name: 'managerPhone',
         message: 'Please enter the manager\'s phone number.',
         validate: managerPhoneInput => {
-            if (isNaN(managerPhoneInput)) {
-                console.log('Please enter the manager\'s phone number.');
-            } else {
+            if (managerPhoneInput) {
                 return true;
+            } else {    
+                console.log('Please enter the manager\'s phone number.');
+                return false;
             }
         }
     }
 ])
-    .then(managerInput => {
+    then(managerInput => {
         const { managerName, managerId, managerEmail, managerPhone } = managerInput;
         const manager = new Manager (managerName, managerId, managerEmail, managerPhone);
 
@@ -143,7 +146,7 @@ const addManager = () => {
             }
         },
         {
-            type: 'inpu',
+            type: 'input',
             name: 'school',
             message: 'What school does the Intern attend?',
             when: (input) => input.role === 'Intern',
@@ -206,13 +209,13 @@ const addManager = () => {
         return generateHTML(employeeArray);
     })
     .then(pageHTML => {
-        return writeFile(pageHTML);
+       return writeFile(pageHTML);
     })
     .catch(err => {
-        console.log(err);
+       console.log(err);
     });
 
-    
+
     
     
 
