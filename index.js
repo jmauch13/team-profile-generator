@@ -135,7 +135,7 @@ const addManager = () => {
             type: 'input',
             name: 'github',
             message: 'Please enter the Engineer\'s github username.',
-            when: (input) => input.role === 'Engineer',
+            when: (input) => input.title === 'Engineer',
             validate: githubInput => {
                 if (githubInput) {
                     return true;
@@ -149,7 +149,7 @@ const addManager = () => {
             type: 'input',
             name: 'school',
             message: 'What school does the Intern attend?',
-            when: (input) => input.role === 'Intern',
+            when: (input) => input.title === 'Intern',
             validate: schoolInput => {
                 if (schoolInput) {
                     return true;
@@ -168,14 +168,14 @@ const addManager = () => {
         ])
             .then(employeeData => {
 
-                let { employeeName, employeeId, employeeEmail, role, github, school, confirmAddEmployee } = employeeData;
+                let { employeeName, employeeId, employeeEmail, title, github, school, confirmAddEmployee } = employeeData;
                 let employee;
 
-                if (role === 'Engineer') {
+                if (title === 'Engineer') {
                     employee = new Engineer (employeeName, employeeId, employeeEmail, github);
                     console.log(employee);
 
-                } else if (role === 'Intern') {
+                } else if (title === 'Intern') {
                     employee = new Intern (employeeName, employeeId, employeeEmail, school);
                     console.log(employee);
                 }
