@@ -8,16 +8,16 @@ test('creates an Engineer object', () => {
     expect(engineer.github) .toEqual(expect.any(String));
 });
 
-// gets github from getGithub()
+// gets github 
 test('gets engineer github value', () => {
     const engineer = new Engineer('Jennie', 80, 'jenniemauch@me.com', 'jmauch13');
 
     expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github.toString()));
 });
 
-// gets role from getRole() 
-test('gets role of employee', () => {
+// gets employee's title
+test('gets title of employee', () => {
     const engineer = new Engineer('Jennie', 80, 'jenniemauch@me.com', 'jmauch13');
 
-    expect(engineer.getRole()).toEqual("Engineer");
+    expect(engineer.getTitle()).toEqual("Engineer");
 });

@@ -5,12 +5,12 @@ const Manager = require('../lib/Manager');
 test('creates an Manager object', () => {
     const manager = new Manager('Jennie', 80, 'jenniemauch@me.com', 4);
     
-    expect(manager.officeNumber).toEqual(expect.any(Number));
+    expect(manager.managerPhone).toEqual(expect.any(Number));
 });
 
-// gets role from getRole()
+// gets manager title
 test('gets role of employee', () => {
     const manager = new Manager('Jennie', 80, 'jenniemauch@me.com');
 
-    expect(manager.getRole()).toEqual("Manager");
+    expect(manager.getTitle()).toEqual("Manager");
 }); 
