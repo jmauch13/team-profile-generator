@@ -71,7 +71,7 @@ const addManager = () => {
         }
     }
 ])
-    then(managerInput => {
+    .then(managerInput => {
         const { managerName, managerId, managerEmail, managerPhone } = managerInput;
         const manager = new Manager (managerName, managerId, managerEmail, managerPhone);
 
